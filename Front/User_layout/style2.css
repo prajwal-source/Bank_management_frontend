@@ -1,0 +1,217 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    
+   color: white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    
+   align-items: center;
+   gap: 50px;
+   position: fixed;
+ 
+   z-index: 99;
+   background-color: black;
+    opacity: 0.9;
+}
+.container img{
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+.box_id{
+    font-size: 20px;
+}
+.box_id {
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.box_id::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px; /* Adjust distance from text */
+    width: 0%;
+    height: 2px; /* Line thickness */
+    background-color: #f9f6f1; /* Line color */
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.box_id:hover {
+    color: #f5a623; /* Change text color */
+}
+
+/* Expand line on hover */
+.box_id:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.img img{
+    width: 100%;
+}
+#box_1{
+    margin-left: 200px;
+}
+
+
+
+/* Main Container */
+.main {
+    position:absolute;
+    margin-top: 150px;
+   
+    /* margin-left: 700px; */
+    
+    width: 100%;
+    height: 100vh;
+}
+
+
+
+
+
+
+/* Footer Styling */
+
+footer {
+    
+   
+    background-color: #171314;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 400px;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 90px;
+    gap: 15px;
+}
+
+/* Footer Logo */
+.footer-logo h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Footer Links */
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #f5a623;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+    color: #f5a623;
+    transform: scale(1.1);
+}
+
+/* Footer Bottom */
+.footer-bottom p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.box{
+    position:absolute;
+   margin-top: 200px;
+    height: 500px;
+    width: 100%;
+    border: 2px solid black;
+    /* background-color: lightgreen; */
+}
+
+.box_box{
+    display: flex;
+}
+.box_class{
+    border: 2px solid red;
+    height: 40px;
+    width: 40px;
+}
+.pass{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: large;
+    font-weight: 500;
+}
+
+#showPassword{
+    width: 60px;
+    height: 25px;
+   
+}
+
+.container_nav{
+   margin-left: 180px;
+   display: flex;
+   align-items: center;
+
+}
+.hello{
+    margin-left: 10px;
+}
+#box_6 img{
+    width: 50px;
+    height: 50px;
+}
+#box_8{
+    margin-left: 50px;
+    padding: 10px;
+    
+    background-color:#cef21d;
+    color: #171314;
+    font-weight: 700;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#box_8:hover{
+background-color: #99b50c;
+
+}
