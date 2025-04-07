@@ -1,19 +1,6 @@
 let request_url = 'http://localhost:8080/user';
 let mail_url = 'http://localhost:8080/mail';
 
-fetch(request_url)
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        console.log(data);
-        console.log("hello");
-
-    })
-    .catch((error) => {
-        console.log("error");
-
-    })
    let myOtp=Math.trunc(Math.random()*100000);
    console.log(myOtp);
    
@@ -29,7 +16,15 @@ document.getElementById("myform").addEventListener('submit', function (e) {
     let age = document.getElementById("age").value;
     let phone = document.getElementById("phone").value;
 
+    if(age<18){
+        e.preventDefault();
+        alert("Age must be greater than 18 ");
+        return;
+    }
+  
+
     let jsonObject = {
+       
         username: username,
         aadhar: aadhaar,
         adress: address,
@@ -37,7 +32,7 @@ document.getElementById("myform").addEventListener('submit', function (e) {
         age: age,
         phone: phone,
         password: password
-
+      
     }
     let mail_obj = {
         username: username,

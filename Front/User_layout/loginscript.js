@@ -2,7 +2,7 @@
 // Register redirecting
 
 document.getElementById("b2").addEventListener("click", function () {
-    window.location.href = 'login.html'
+    window.location.href = 'login_form.html'
 })
 let request_url = 'http://localhost:8080/user';
 
@@ -22,11 +22,14 @@ document.getElementById("login_form").addEventListener("submit", function (e) {
 
                 alert("login Success")
                 sessionStorage.setItem("id", userId);
+                sessionStorage.setItem("user",data.username)
+                sessionStorage.setItem("password",password)
+            
                 window.location.href = "index2.html"
 
             }
             else {
-                alert("Error")
+                alert("Invalid Credentials")
 
             }
         })

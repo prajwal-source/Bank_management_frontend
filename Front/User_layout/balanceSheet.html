@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Formatted Table</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+
+    <style>
+        body {
+            background-color: #c8c78a;
+        }
+
+        table {
+
+            width: 60%;
+
+            background-color: white;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: left;
+
+        }
+
+        td {
+            font-weight: 800;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            margin-top: 200px;
+            display: flex;
+           margin-left: 400px;
+        }
+
+        .img {
+         
+        }
+
+        .table {
+            width: 350px;
+
+        }
+
+        #MyTable {
+            width: 550px;
+            margin-left: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            margin-top: 30px;
+            font-size: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            margin-left: 100px;
+            background-color: green;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: rgb(9, 99, 9);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="img">
+
+        </div>
+        <div class="table">
+
+
+            <table id="MyTable">
+                <tr>
+                    <td>Username</td>
+                    <td id="username">null</td>
+                </tr>
+                <tr>
+                    <td>Id</td>
+                    <td id="id">0</td>
+                </tr>
+                <tr>
+                    <td>Balance</td>
+                    <td id="balance">0.0</td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td id="mobile">000-00-000</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td id="address">null</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td id="email">null</td>
+                </tr>
+            </table>
+
+            <button onclick="downloadPDF()">Download PDF</button>
+
+
+        </div>
+    </div>
+    <script>
+
+        let username = document.getElementById("username")
+        let id_1 = document.getElementById("id")
+        let balance = document.getElementById("balance")
+        let mobile = document.getElementById("mobile")
+        let address = document.getElementById("address")
+        let email = document.getElementById("email");
+
+        let id = sessionStorage.getItem("id")
+        console.log(id);
+
+
+        let request_url = 'http://localhost:8080/user';
+        let request_url_id = `http://localhost:8080/user/${id}`;
+
+        fetch(request_url_id)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                username.innerHTML = data.username;
+                id_1.innerHTML = data.id;
+                mobile.innerHTML = data.phone;
+                address.innerHTML = data.adress;
+                email.innerHTML = data.email;
+
+                balance.innerHTML = data.balance.amount;
+
+
+            })
+            .catch(error => {
+                console.error("Fetch error:", error.message);
+            });
+
+
+
+
+
+        // form image
+        fetch(`http://localhost:8080/view/${id}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.blob();
+            })
+            .then((blob) => {
+                const imageUrl = URL.createObjectURL(blob);
+
+                // Create an <img> element
+                const img = document.createElement("img");
+                img.src = imageUrl;
+                img.alt = "Loaded image";
+                img.style.width = "200px"; 
+                img.style.height="258px";// optional styling
+                img.style.borderRadius = "10px";
+                img.style.border="2px solid black"
+
+                // Append it to the .img container
+                document.querySelector(".img").appendChild(img);
+            })
+            .catch((error) => {
+                console.log("Fetch failed:", error.message);
+            });
+
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.autoTable({ html: '#MyTable' });
+
+            doc.save(sessionStorage.getItem("user"));
+        }
+    </script>
+</body>
+
+</html>

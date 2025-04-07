@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="image_upload.css"> <!-- Linking external CSS -->
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form id="myform" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <br><br>
+            <button type="submit">Upload</button>
+           
+        </form>
+    </div>
+
+    <script>
+        let user_id = sessionStorage.getItem("id"); // fetch user ID from session storage
+
+        document.getElementById("myform").addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const form = document.getElementById("myform");
+            const formData = new FormData(form);
+
+            fetch(`http://localhost:8080/upload/${user_id}`, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert("Image uploaded successfully!");
+                    console.log("Success:", data);
+                     window.location.href="index2.html"
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("Failed to upload image.");
+                    return;
+                });
+
+               
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

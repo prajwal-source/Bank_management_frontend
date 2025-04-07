@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Funds</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        button {
+            border-radius: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #17fd33;
+            font-size: 20px;
+
+        }
+
+        button:hover {
+            background-color: #10da28;
+        }
+
+        .container {
+            position: absolute;
+            border: 2px solid black;
+            margin-top: 150px;
+            margin-left: 32%;
+            background-color: black;
+            opacity: 0.9;
+            padding: 50px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .container:hover {
+            opacity: 1.0;
+        }
+
+        .img img {
+            object-fit: cover;
+            width: 100%;
+        }
+        #balance_show{
+            
+            font-weight: 600;
+            width: 20px;
+            font-size: 30px;
+        }
+        #transfer{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 >Select Account Type</h1>
+        <br>
+        <h2 >From which account would you like to Transfer?</h2>
+        <br>
+        <button class="but" id="check_balance">Check Balance</button>
+        <button class="but" id="transfer">Transfer</button>
+        <br>
+        <br>
+        <br>
+        <h1id   id="balance_show"></h1>
+
+
+
+    </div>
+    <div class="img"><img src="/Front/User_layout/Resources/pexels-cottonbro-3944405.jpg" alt=""></div>
+    <script>
+        let check_balance = document.getElementById("check_balance");
+        let id = sessionStorage.getItem("id")
+        console.log(id);
+
+
+        let request_url = 'http://localhost:8080/user';
+        let request_url_id = `http://localhost:8080/user/${id}`;
+
+        fetch(request_url_id)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                check_balance.addEventListener('click',function(){
+               document.getElementById("balance_show").innerHTML="Balance : "+data.balance.amount;
+              
+
+                })
+
+                document.getElementById("transfer").addEventListener("click",function(){
+                    window.location.href="Account_details.html";
+                })
+
+            })
+            .catch((Error) => {
+                console.log("Error");
+
+            })
+
+    </script>
+
+</body>
+
+</html>

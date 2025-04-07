@@ -17,7 +17,7 @@
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <div class="pass">Show Password <input type="checkbox" id="showPassword"></div>
+            <div class="pass">Show Password <img id="visibility_button" src="/Front/User_layout/Resources/visi_close_black.png" alt="" srcset=""></div>
             
 
 
@@ -37,16 +37,28 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" required>
 
+          
+
             <button type="submit">Register</button>
         </form>
     </div>
+   
     <script>
-        document.getElementById("showPassword").addEventListener("change", function () {
-            let passwordField = document.getElementById("password");
-            passwordField.type = this.checked ? "text" : "password";
-        });
+        // to show password
+    document.getElementById("visibility_button").addEventListener("click", function() {
+    const passwordField = document.getElementById("password");
+    const visibilityIcon = document.getElementById("visibility_button");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text"; // Show password
+        visibilityIcon.src = "/Front/User_layout/Resources/visi_open_blackk.png"; // Change icon
+    } else {
+        passwordField.type = "password"; // Hide password
+        visibilityIcon.src = "/Front/User_layout/Resources/visi_close_black.png"; // Change back
+    }
+});
     </script>
-    <script src="script.js"></script>
+    <script src="Login_form.js"></script>
 
 </body>
 

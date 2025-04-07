@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+</head>
+<style>
+    *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    
+   color: white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ 
+    
+}
+    .banner{
+         /* border: 2px solid black; */
+         margin-top: 200px;
+         width: 600px;
+         font-weight: 500;
+         color: white;
+         text-align: center;
+         font-size: 35px;
+         background-color:black;
+         opacity: 0.7;
+         border-radius: 20px;
+         padding: 20px;
+         position: absolute;
+         margin-left: 38%;
+    }
+    #Login{
+        padding: 15px;
+        background-color: rgb(18, 216, 18);
+        border-radius: 30px;
+        cursor: pointer;
+        color: black;
+    }
+    #Login:hover{
+      
+    }
+    .bgi img{
+    width: 100%;
+}
+  
+</style>
+<body>
+    <div class="banner">Please Login First<br><br> <span id="Login">Login</span></div>
+    <div class="bgi"><img src="/Front/User_layout/Resources/pexels-mikhail-nilov-6962989.jpg" alt="" srcset=""></div>
+
+</body>
+<script>
+    document.getElementById("Login").addEventListener("click", function() {
+        window.location.href = "/Front/User_layout/index.html"; // Redirect to login page
+    });
+</script>
+</html>

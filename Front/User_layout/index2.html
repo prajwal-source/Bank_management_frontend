@@ -8,6 +8,7 @@
 </head>
 <link rel="stylesheet" href="style2.css">
 
+
 <body>
     <div class="header">
         <div class="container">
@@ -17,25 +18,25 @@
             <div id="box_3" class="box_id">Contact Us</div>
             <div id="box_4" class="box_id">Loan</div>
             <div class="container_nav">
-                <div id="box_6" class=""><img src="/Front/User_layout/Resources/account_circle.png" alt=""></div>
+                <div id="box_6" class=""><img id="profileImg" src="/Front/User_layout/Resources/account_circle.png"
+                        alt=""></div>
                 <div class="hello">
-                     <div id="box_7">Hello</div>
+                    <div id="box_7">Hello</div>
                     <div id="box_5" class="box_id">Username</div>
                 </div>
-                <div id="box_8" class="box_id2">Log Out</div>   
+                <div id="upload">
+                    <div id="box_8" class="box_id2">Log Out</div>
+                    <div id="box_9" class="box_id2">Upload Image</div>
+                </div>
+
+
             </div>
+
         </div>
     </div>
 
- 
-    <div class="box">
-        <div class="box_box">
-            <div class="box_class" id="box_class_1"></div>
-            <div class="box_class" id="box_class_2"></div>
-            <div class="box_class" id="box_class_3"></div>
-            <div class="box_class" id="box_class_4"></div>
-            <div class="box_class" id="box_class_5"></div>
-        </div>
+
+
 
     </div>
     <div class="img">
@@ -71,17 +72,39 @@
 
 <script>
 
-   
+
 
     //contact redirecting
-    let contact=document.getElementById("box_3")
-    contact.addEventListener("click",function(){
-        window.location.href="contact.html"
+    let contact = document.getElementById("box_3")
+    contact.addEventListener("click", function () {
+        window.location.href = "contact.html"
     })
-    
-   
-     
-   
+
+    document.getElementById("box_2").addEventListener("click", function () {
+        window.location.href = "payment1.html"; // Redirect to payment page
+    });
+
+    document.getElementById("box_1").addEventListener("click", function () {
+        window.location.href = "entry.html"; // Redirect to payment page
+    });
+
+    document.getElementById("box_4").addEventListener("click", function () {
+        window.location.href = "balanceSheet.html"
+    })
+    document.getElementById("box_9").addEventListener("click", function () {
+        window.location.href = "image_upload.html"
+    })
+
+    const profileImg = document.querySelector('#box_6 img');
+
+    profileImg.addEventListener('click', () => {
+        profileImg.classList.toggle('enlarged');
+    });
+
+    document.getElementById("box_5").addEventListener("click",function(){
+        window.location.href="entry.html";
+    })
+
 </script>
 
 

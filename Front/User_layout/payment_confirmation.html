@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+
+            color: rgb(0, 0, 0);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+
+        .img img {
+            object-fit: cover;
+            width: 100%;
+        }
+
+   
+
+        /* Form Container */
+        .container {
+            position: absolute;
+            margin-top: 180px;
+            margin-left: 600px;
+            background-color: black;
+            color: white;
+            opacity: 0.9;
+            /* Semi-transparent white */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            text-align: center;
+        }
+        .confirmed{
+            width: 285px;
+           margin-left: 50px;
+           padding: 5px;
+          margin-top: 30px;
+          display: flex;
+          justify-content: space-evenly;
+          font-size: 15px;
+         
+        
+        }
+       #yes{
+        padding: 10px 30px;
+        background-color: green;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+       
+       }
+       #yes:hover{
+        background-color: rgb(6, 165, 6);;
+       }
+       #no{
+        padding: 8px 30px ;
+        background-color: red;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        
+       }
+       #no:hover{
+        background-color: rgb(233, 0, 0);
+       }
+        #r_name{
+            font-size: 30px;
+            margin-top: 40px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Confirm The Receiver Name : </h2>
+        <div id="r_name"></div>
+        <div class="confirmed">
+            <button id="no" style="font-weight: 700;">No</button>
+            <button id="yes" style="font-weight: 700;">Yes</button>
+        </div>
+    </div>
+    <div class="img"><img src="/Front/User_layout/Resources/bgc2.jpg" alt=""></div>
+
+    <script>
+        let userId=sessionStorage.getItem("receiver_id")
+        console.log(userId);
+        
+        let request_url = 'http://localhost:8080/user';
+        let request_url_id = `http://localhost:8080/user/${userId}`;
+       
+        fetch(request_url_id)
+        .then((Response)=>{
+            return Response.json();
+        })
+        .then((data)=>{
+            console.log(data);
+            document.getElementById("r_name").innerHTML=data.username;
+            sessionStorage.setItem("reciver_amount",data.balance.amount)
+        })
+        .catch((Error)=>{
+            console.log("Error");
+            
+            
+        })
+         document.getElementById("no").addEventListener('click',function(){
+            alert("Please renter the Id");
+            window.location.href="Account_details.html"
+        })
+       
+        document.getElementById("yes").addEventListener('click',function(){
+            
+            window.location.href="sending_money.html"
+        })
+    </script>
+</body>
+
+</html>

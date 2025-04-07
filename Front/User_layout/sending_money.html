@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Funds</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+
+            color: rgb(0, 0, 0);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+
+        .img img {
+            object-fit: cover;
+            width: 100%;
+        }
+
+        #enter {
+            font-weight: 700;
+        }
+
+        /* Form Container */
+        .container {
+           position: absolute;
+           margin-top: 120px;
+            margin-left: 600px;
+           background-color: black;
+           color: white;
+           opacity: 0.85;
+            /* Semi-transparent white */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+
+        /* Heading */
+        h2 {
+            text-align: center;
+        }
+
+        /* Labels */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Input Fields */
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Submit Button */
+        button {
+            font-weight: 700;
+            width: 100%;
+            padding: 10px;
+            background-color: #10da28;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 25px;
+            font-size: 20px;
+        }
+
+        /* Button Hover Effect */
+        button:hover {
+            background-color: #0bbe20;
+        }
+
+        .pass {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: large;
+        }
+
+        .pass img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .pass:hover img {
+            transform: scale(1.2);
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="myform" method="post">
+            <label for="username">Enter Amount :</label>
+            <input type="number" id="amount" name="username" required>
+            <label for="username">Re-Enter Amount :</label>
+            <input type="number" id="confirm_amount" name="username" required>
+            <label for="username">Password:</label>
+            <input type="password" name="" id="password">
+            <div class="pass">Show Password <img id="visibility_button"
+                src="/Front/User_layout/Resources/visibility_close.png" alt="" srcset=""></div>
+     
+          <button type="submit">Confirm</button>
+
+        </form>
+
+    </div>
+    <div class="img"><img src="/Front/User_layout/Resources/bgc2.jpg" alt=""></div>
+<script>
+    
+        // to show password
+        document.getElementById("visibility_button").addEventListener("click", function () {
+            const passwordField = document.getElementById("password");
+            const visibilityIcon = document.getElementById("visibility_button");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text"; // Show password
+                visibilityIcon.src = "/Front/User_layout/Resources/visibility_open.png"; // Change icon
+            } else {
+                passwordField.type = "password"; // Hide password
+                visibilityIcon.src = "/Front/User_layout/Resources/visibility_close.png"; // Change back
+            }
+        });
+</script>
+<script src="sending_money.js"></script>
+</body>
+
+</html>

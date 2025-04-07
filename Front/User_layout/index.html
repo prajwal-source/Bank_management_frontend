@@ -11,7 +11,7 @@
 <body>
     <div class="header">
         <div class="container">
-            <div id="box_0"><img src="/Front/User_layout/Resources/Banking (2).png" alt=""></div>
+            <div id="logo"><img src="/Front/User_layout/Resources/Banking (2).png" alt=""></div>
             <div id="box_1" class="box_id">Create Account</div>
             <div id="box_2" class="box_id">Make Payment</div>
             <div id="box_3" class="box_id">Contact Us</div>
@@ -33,7 +33,7 @@
                 <input type="text" name="Username" placeholder="UserName" id="username" required>
                 <input type="number" name="UserId" placeholder="userID" id="uid" required>
                 <input type="password" name="password" placeholder="Password" id="password" required>
-                <div class="pass">Show Password <input type="checkbox" id="showPassword"></div>
+                <div class="pass">Show Password <img id="visibility_button" src="/Front/User_layout/Resources/visibility_close.png" alt="" srcset=""></div>
                 <div class="button">
                     <button type="submit" id="b1">Login</button>
                     <div id="b2">Register</div>
@@ -85,23 +85,45 @@
 <script>
 
     // to show password
-    document.getElementById("showPassword").addEventListener("change", function () {
-        let passwordField = document.getElementById("password");
-        passwordField.type = this.checked ? "text" : "password";
-    });
+    document.getElementById("visibility_button").addEventListener("click", function() {
+    const passwordField = document.getElementById("password");
+    const visibilityIcon = document.getElementById("visibility_button");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text"; // Show password
+        visibilityIcon.src = "/Front/User_layout/Resources/visibility_open.png"; // Change icon
+    } else {
+        passwordField.type = "password"; // Hide password
+        visibilityIcon.src = "/Front/User_layout/Resources/visibility_close.png"; // Change back
+    }
+});
+
    // this is for redirecting
 
     let next=document.getElementById("box_1")
     next.addEventListener("click",function(){
-        window.location.href="login.html"
+        window.location.href="Login_form.html"
     })
-
+    
+    // document.getElementById("b2").addEventListener("click",function(){
+    //     window.location.href="login_form.html"
+    // })
     //contact redirecting
     let contact=document.getElementById("box_3")
     contact.addEventListener("click",function(){
         window.location.href="contact.html"
     })
 
+    //logo redirecting
+    document.getElementById("logo").addEventListener("click",function(){
+        window.location.href="index.html"
+    })
+
+    //payment redirecting
+
+    document.getElementById("box_2").addEventListener("click",function(){
+        window.location.href="Payment.html"
+    })
    
 </script>
 

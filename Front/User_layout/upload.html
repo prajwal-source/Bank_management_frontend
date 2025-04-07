@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Upload</title>
+</head>
+<style>
+  body{
+    background-color: black;
+  }
+  </style>
+<body>
+  <h2>Upload Image to Spring</h2>
+  <div id="img"></div>
+  <script>
+    fetch(`http://localhost:8080/view/3`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.blob(); // image data
+      })
+      .then((blob) => {
+        const imageUrl = URL.createObjectURL(blob);
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = "Loaded image";
+        
+
+        document.getElementById("img").appendChild(img);
+      })
+      .catch((error) => {
+        console.log("Fetch failed:", error.message);
+      });
+    </script>
+    
+</body>
+</html>
